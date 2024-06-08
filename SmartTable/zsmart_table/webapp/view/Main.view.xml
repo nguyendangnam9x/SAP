@@ -1,0 +1,52 @@
+<mvc:View xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" controllerName="com.namnd.zsmarttable.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartfield="sap.ui.comp.smartfield"
+    >
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <smartfilterbar:SmartFilterBar id="smartFilter"
+                entitySet="Products"
+                persistencyKey="SmartFilter_Explored">
+                <smartfilterbar:controlConfiguration>
+                    <!--ID-->
+                    <smartfilterbar:ControlConfiguration key="ID" visibleInAdvancedArea="true">
+                        <smartfilterbar:defaultFilterValues>
+                            <smartfilterbar:SelectOption low="1"></smartfilterbar:SelectOption>
+                        </smartfilterbar:defaultFilterValues>
+                    </smartfilterbar:ControlConfiguration>
+                    <!--Name-->
+                    <smartfilterbar:ControlConfiguration key="Name" visibleInAdvancedArea="true">
+                        <smartfilterbar:defaultFilterValues>
+                            <smartfilterbar:SelectOption low="Milk"></smartfilterbar:SelectOption>
+                        </smartfilterbar:defaultFilterValues>
+                    </smartfilterbar:ControlConfiguration>
+                </smartfilterbar:controlConfiguration>
+            </smartfilterbar:SmartFilterBar>
+            <smartTable:SmartTable id="SmartTable" initiallyVisibleFields="ID,Name,Description,ReleaseDate"
+                entitySet="Products"
+                smartFilterId="smartFilter"
+                tableType="ResponsiveTable"
+                enableExport="true"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                showRowCount="true"
+                header="Product"
+                persistencyKey="SmartTable_Explored"
+                enableAutoBinding="true"
+                enableAutoColumnWidth="false"
+                class="sapUiResponsivecContantPadding "
+            >
+                <Table id="product_table" mode="MultiSelect">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button class="sapUiSmallMarginBeginEnd" text="Delete" icon="sap-icon://delete" press="onDelete" type="Reject"></Button>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                </Table>
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>
